@@ -4,6 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\VillageSeeder;
+use Database\Seeders\DistrictSeeder;
+use Database\Seeders\ProvinceSeeder;
+use Database\Seeders\RegionTypeSeeder;
+use Database\Seeders\SubdistrictSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            RegionTypeSeeder::class,
+            ProvinceSeeder::class,
+            DistrictSeeder::class,
+            SubdistrictSeeder::class,
+            VillageSeeder::class,
+        ]);
     }
 }
