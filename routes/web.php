@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompleteProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'check.village'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/complete-profile', [CompleteProfileController::class, 'edit'])->name('user.complete-profile');
+    Route::post('/complete-profile', [CompleteProfileController::class, 'update'])->name('user.complete-profile.update');
 });
