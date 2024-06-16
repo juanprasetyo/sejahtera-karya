@@ -102,6 +102,24 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
+                            <div class="border-t border-gray-200"></div>
+
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Dashboard') }}
+                            </div>
+                            
+                            @if(Auth::user()->hasRole('project-owner'))
+                                <x-dropdown-link href="{{ route('project-owner.dashboard') }}">
+                                    {{ __('Dashboard Project Owner') }}
+                                </x-dropdown-link>
+                            @endif
+
+                            @if(Auth::user()->hasRole('admin'))
+                                <x-dropdown-link href="{{ route('admin.dashboard') }}">
+                                    {{ __('Dashboard Admin') }}
+                                </x-dropdown-link>
+                            @endif
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
