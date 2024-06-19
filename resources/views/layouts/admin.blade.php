@@ -12,18 +12,17 @@
 
         @vite('resources/plugins/fontawesome-free/css/all.min.css')
         
-        @stack('styles')
-
         @vite(['resources/css/adminlte.css', 'resources/js/app.js'])
-
-        <!-- Styles -->
+        
         @livewireStyles
+
+        @stack('styles')
     </head>
     <body class="hold-transition sidebar-mini">
       <div class="wrapper">
 
         <div class="preloader flex-column justify-content-center align-items-center">
-          <img class="animation__shake" src="{{ Vite::asset('resources/images/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
+          <img class="animation__shake" src="{{ Vite::asset('resources/images/SejahteraKaryaLogo.png') }}" alt="SejahteraKaryaLogo" height="248" width="248">
         </div>
       
         <!-- Navbar -->
@@ -66,8 +65,8 @@
         <x-admin.footer />
       </div>
 
+        @livewireScripts
         @vite(['resources/plugins/jquery/jquery.min.js', 'resources/plugins/bootstrap/js/bootstrap.bundle.min.js', 'resources/js/adminlte.js'])
         @stack('scripts')
-        @livewireScripts
     </body>
 </html>

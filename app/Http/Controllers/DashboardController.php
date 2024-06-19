@@ -21,6 +21,11 @@ class DashboardController extends Controller
     }
 
     public function worker() {
-        return view('dashboard');
+        // $projects = Project::where('village_id', Auth::user()->village_id)->get();
+        $data = [
+            'projects' => Project::with('subdistrict', 'village')->paginate(9),
+        ];
+
+        return view('dashboard', $data);
     }
 }

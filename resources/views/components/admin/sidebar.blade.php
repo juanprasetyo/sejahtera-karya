@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
-      <img src="{{ Vite::asset('resources/images/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ Vite::asset('resources/images/SejahteraKaryaLogo.png') }}" alt="Sejahtera Karya Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Sejahtera Karya</span>
     </a>
 
@@ -39,7 +39,7 @@
                 </p>
             </x-admin.sidebar-link>
             <x-admin.sidebar-link :url="route('project-owner.projects.index')" :active="request()->routeIs('project-owner.projects.index')">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon fas fa-suitcase"></i>
                 <p>
                     Proyek
                 </p>

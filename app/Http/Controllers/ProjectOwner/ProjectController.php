@@ -4,17 +4,13 @@ namespace App\Http\Controllers\ProjectOwner;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Traits\AuthorizesProjects;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
-    protected function authorizeProject(Project $project)
-    {
-        if ($project->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
-    }
+    use AuthorizesProjects;
     
     /**
      * Display a listing of the resource.
@@ -66,7 +62,7 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        $project = Project::findOrFail($id)->with('user', 'province', 'district', 'subdistrict', 'village')->first();
+        $project = Project::with('user', 'province', 'district', 'subdistrict', 'village')->findOrFail($id);
         
         return view('project-owner.projects.show', compact('project'));
     }

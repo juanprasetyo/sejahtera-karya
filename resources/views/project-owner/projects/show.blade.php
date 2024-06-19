@@ -68,7 +68,10 @@
               </li>
             </ul>
 
-            <a href="#" class="btn btn-primary btn-block"><b>Cek Pendaftar</b></a>
+            <a href="{{ route('project-owner.project.workers', $project->id) }}" class="btn btn-primary btn-block"><b>Cek Pendaftar</b></a>
+            <x-button-back :fallbackUrl="route('project-owner.projects.index')">
+              Kembali
+            </x-back-button>
           </div>
           <!-- /.card-body -->
         </div>

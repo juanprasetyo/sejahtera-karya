@@ -51,4 +51,14 @@ class Project extends Model
     {
         return $this->belongsTo(Village::class);
     }
+
+    public function workers()
+    {
+        return $this->hasMany(ProjectWorker::class)->where('status', 'accept');
+    }
+
+    public function allWorkers()
+    {
+        return $this->hasMany(ProjectWorker::class);
+    }
 }
