@@ -60,6 +60,11 @@ jobs:
 
     - name: Build assets with Vite
       run: npm run build
+    
+    - name: Add known_hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -p 65002 154.41.240.139 >> ~/.ssh/known_hosts
 
     - name: Deploy to Shared Hosting
       uses: easingthemes/ssh-deploy@v2.1.5
