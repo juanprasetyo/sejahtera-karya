@@ -14,7 +14,7 @@ class ProjectController extends Controller
         $data = [
             'project' => Project::with('user')->findOrFail($id),
         ];
-        dump($data);
+
         return view('project.show', $data);
     }
 
@@ -24,6 +24,10 @@ class ProjectController extends Controller
 
         if ($user->hasRole('admin') || $user->hasRole('project-owner')) {
             return redirect()->back()->with('error', 'You are not allowed to register for this project.');
+        }
+
+        if ($project->status === 'closed') {
+            return redirect()->back()->with('error', 'This project is closed. You cannot register for it.');
         }
 
         $existingRegistration = ProjectWorker::where('user_id', $user->id)->where('project_id', $id)->first();

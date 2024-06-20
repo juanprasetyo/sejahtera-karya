@@ -45,6 +45,6 @@ class CompleteProfile extends Component
 
     public function render()
     {
-        return view('components.complete-profile');
+        return view('livewire.complete-profile');
     }
 }

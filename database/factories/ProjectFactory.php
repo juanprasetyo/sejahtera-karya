@@ -24,7 +24,8 @@ class ProjectFactory extends Factory
         $province = Province::inRandomOrder()->first();
         $district = District::where('province_id', $province->id)->inRandomOrder()->first();
         $subdistrict = Subdistrict::where('district_id', $district->id)->inRandomOrder()->first();
-        $village = Village::where('subdistrict_id', $subdistrict->id)->inRandomOrder()->first();
+        $village = Village::where('subdistrict_id', 340407)->inRandomOrder()->first();
+        // $village = Village::where('subdistrict_id', $subdistrict->id)->inRandomOrder()->first();
         $owner = User::role('project-owner')->inRandomOrder()->first();
 
         $startTime = $this->faker->time('H:i');
@@ -36,9 +37,12 @@ class ProjectFactory extends Factory
         return [
             'name' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph,
-            'province_id' => $province->id,
-            'district_id' => $district->id,
-            'subdistrict_id' => $subdistrict->id,
+            // 'province_id' => $province->id,
+            // 'district_id' => $district->id,
+            // 'subdistrict_id' => $subdistrict->id,
+            'province_id' => 34,
+            'district_id' => 3404,
+            'subdistrict_id' => 340407,
             'village_id' => $village->id,
             'user_id' => $owner->id,
             'workers_needed' => $this->faker->numberBetween(10, 20),

@@ -48,6 +48,6 @@ class ProjectWorkers extends Component
 
     public function render()
     {
-        return view('components.project-owner.project-workers');
+        return view('livewire.project-owner.project-workers');
     }
 }
